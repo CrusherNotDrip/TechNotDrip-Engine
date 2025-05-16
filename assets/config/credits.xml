@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <credits>
-    <user name="TechnikTil" icon="techniktil">
-        <description>i coded 50% of TechNotDrip Engine.</description> <!-- including these credits, so i deserve to be on the top (TOP AYO FREAK ALERT HERE) -->
-        <socials>
-            <github contributor="true">TechnikTil</github>
-            <twitter>https://twitter.com/TechnikTil</twitter>
-            <youtube>https://youtube.com/user/TechnikTil</youtube>
-            <bluesky>https://bsky.app/profile/techniktil.github.io/</bluesky>
-        </socials>
-    </user>
     <user name="CrusherNotDrip" icon="crushernotdrip">
         <description>coded everything thats actually important lol</description>
         <socials>
