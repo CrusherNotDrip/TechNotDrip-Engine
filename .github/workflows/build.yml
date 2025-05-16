@@ -165,5 +165,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: TechNotDrip-Engine_IOS
+          name: TechNotDrip-Engine_iOS
           path: export/release/ios/build/Release-iphoneos/*.ipa
