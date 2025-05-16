@@ -11,7 +11,7 @@ class GenerateSongsFolder
 	public static function main()
 	{
 		var songsToGenerate:Array<Array<String>> = [];
-		var generateText:Array<String> = File.getContent('./songsToGenerate.txt').split('\n');
+		var generateText:Array<String> = File.getContent('./rule34.txt').split('\n');
 
 		for (i in generateText)
 		{
