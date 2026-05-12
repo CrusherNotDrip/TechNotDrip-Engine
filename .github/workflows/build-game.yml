@@ -40,6 +40,10 @@ jobs:
           - target: android
             name: Build for Android
             runs-on: ubuntu-latest
+
+          - target: html5
+            name: Build for HTML5
+            runs-on: ubuntu-latest
     runs-on:
       - ${{matrix.runs-on}}
     steps:
