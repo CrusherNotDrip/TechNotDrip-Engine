@@ -184,3 +184,5 @@ jobs:
     steps:
       - name: Publish Artifact (on HTML5)
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: TechNotDrip-Engine_HTML5
