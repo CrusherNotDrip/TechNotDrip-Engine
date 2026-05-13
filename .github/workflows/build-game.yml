@@ -166,13 +166,13 @@ jobs:
         with:
           path: export/release/html5/bin/
 
-deploy:
-  environment:
-    name: github-pages
-    url: ${{ steps.deployment.outputs.page_url }}
-  runs-on: ubuntu-latest
-  needs: build
-  steps:
-    - name: Publish Artifact (on HTML5)
-      if: ${{ matrix.target == 'html5' }}
-      uses: actions/deploy-pages@v4
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Publish Artifact (on HTML5)
+        if: ${{ matrix.target == 'html5' }}
+        uses: actions/deploy-pages@v4
