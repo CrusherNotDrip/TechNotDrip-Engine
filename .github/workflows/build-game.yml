@@ -72,18 +72,21 @@ jobs:
         run: haxelib --global run hmm install -q
 
       - name: Restore HXCPP Cache
+        if: ${{matrix.target != 'html5'}}
         uses: actions/cache@main
         with:
           path: ${{runner.temp}}/hxcpp_cache
           key: ${{matrix.target}}-hxcpp
 
       - name: Configure HXCPP Cache
+        if: ${{matrix.target != 'html5'}}
         shell: bash
         run: |
           echo "HXCPP_COMPILE_CACHE=${{runner.temp}}/hxcpp_cache" >> "$GITHUB_ENV"
           echo 'HXCPP_CACHE_MB="4096"' >> "$GITHUB_ENV"
 
       - name: Compile HXCPP Build Tools
+        if: ${{matrix.target != 'html5'}}
         run: |
           cd .haxelib/hxcpp/git/tools/hxcpp
           haxe compile.hxml
@@ -91,7 +94,7 @@ jobs:
           haxelib run hxcpp cache list
 
       - name: Install Linux Dependencies
-        if: ${{runner.os == 'Linux'}}
+        if: ${{runner.os == 'Linux' && matrix.target != 'html5'}}
         run: |
           sudo apt-get -y install libvlc-dev libvlccore-dev
 
@@ -140,7 +143,7 @@ jobs:
           zip -r TechNotDripEngine.ipa Payload
 
       - name: Upload Artifact
-        if: ${{ matrix.target != 'ios' && matrix.target != 'android' }}
+        if: ${{ matrix.target != 'html5' && matrix.target != 'ios' && matrix.target != 'android' }}
         uses: actions/upload-artifact@v4
         with:
           name: TechNotDrip-Engine_${{steps.artifact-string.outputs.uppercase}}
@@ -164,6 +167,7 @@ jobs:
         if: ${{ matrix.target == 'html5' }}
         uses: actions/upload-pages-artifact@v3
         with:
+          name: TechNotDrip-Engine_HTML5
           path: export/release/html5/bin/
 
   deploy:
@@ -174,5 +178,4 @@ jobs:
     needs: build
     steps:
       - name: Publish Artifact (on HTML5)
-        if: ${{ matrix.target == 'html5' }}
         uses: actions/deploy-pages@v4
